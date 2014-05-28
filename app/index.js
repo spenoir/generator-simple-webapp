@@ -14,7 +14,9 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
         this.installDependencies({
           skipInstall: this.options['skip-install'],
           callback: function () {
-            this.spawnCommand('./node_modules/.bin/bower-installer');
+            if (!this.options['skipBowerInstaller']) {
+              this.spawnCommand('./node_modules/.bin/bower-installer');
+            }
           }.bind(this) // bind the callback to the parent scope
         });
 
@@ -30,13 +32,13 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      name: 'skipBowerInstaller',
+      message: 'Would you like to skip bower-installer?',
+      default: false
     }];
 
     this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
+      this.skipBowerInstaller = props.skipBowerInstaller;
 
       done();
     }.bind(this));
