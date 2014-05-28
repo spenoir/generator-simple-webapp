@@ -54,6 +54,7 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     this.mkdir('app/public/js/tests/unit');
     this.mkdir('app/public/js/tests/e2e');
     this.mkdir('app/public/sass');
+    this.mkdir('app/public/images');
     this.mkdir('app/templates');
 
     this.copy('_package.json', 'package.json');

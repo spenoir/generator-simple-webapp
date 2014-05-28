@@ -1,7 +1,7 @@
 {
-    "name": "agentsportal",
+    "name": "simple webapp",
     "version": "0.0.0",
-    "description": "agentsmutual agents portal",
+    "description": "simple webapp",
     "private": "true",
     "dependencies": {
         "karma-chrome-launcher": "~0.1.0",
@@ -22,8 +22,13 @@
         "grunt-contrib-sass": "latest",
         "grunt-contrib-watch": "latest",
         "grunt-contrib-compass": "latest",
+        "grunt-contrib-connect": "~0.7.1",
+        "grunt-contrib-clean": "~0.5.0",
         "karma-teamcity-reporter": "latest",
-        "grunt-mustache": "latest"
+        "grunt-mustache": "latest",
+        "load-grunt-tasks": "~0.4.0",
+        "time-grunt": "~0.3.1",
+        "grunt-contrib-uglify": "latest"
     },
     "devDependencies": {},
     "scripts": {
