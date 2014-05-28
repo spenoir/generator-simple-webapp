@@ -1,0 +1,53 @@
+{
+  "name": "agentsmutual",
+  "version": "0.0.0",
+  "description": "agentsmutual agents portal",
+  "dependencies": {
+    "jquery": "latest",
+    "jquery.validation": "latest",
+    "jasmine-jquery": "1.5.93",
+    "bootstrap-sass-official": "latest",
+    "compass-mixins": "latest",
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.1.0/chosen_v1.1.0.zip",
+    "bootstrap-chosen": "https://github.com/alxlit/bootstrap-chosen.git"
+  },
+  "install": {
+    "path": "public/bower",
+    "sources": {
+      "bootstrap-chosen": [
+          "bower_components/bootstrap-chosen/bootstrap-chosen.scss",
+          "bower_components/bootstrap-chosen/bootstrap-chosen-variables.scss"
+      ],
+      "off-canvas-mobile-nav": "bower_components/off-canvas-mobile-nav/css/style.css",
+      "compass-mixins": [
+          "bower_components/compass-mixins/lib/**"
+      ],
+      "bootstrap-sass-official": "bower_components/bootstrap-sass-official/vendor/assets/**",
+      "chosen": [
+        "bower_components/chosen/chosen.css",
+        "bower_components/chosen/chosen-sprite.png",
+        "bower_components/chosen/chosen-sprite@2x.png",
+        "bower_components/chosen/chosen.jquery.js"
+      ]
+    }
+  },
+  "authors": [
+    "Adam Spence",
+    "Alison Pettipher"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    ".*",
+    "test/*",
+    "tests/*",
+    "bower.json",
+    "grunt.js",
+    "LICENCE",
+    "README.md",
+    "package.json",
+    "build/*",
+    "docs/*"
+  ]
+}

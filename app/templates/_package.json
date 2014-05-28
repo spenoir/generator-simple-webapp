@@ -1,0 +1,33 @@
+{
+    "name": "agentsportal",
+    "version": "0.0.0",
+    "description": "agentsmutual agents portal",
+    "private": "true",
+    "dependencies": {
+        "karma-chrome-launcher": "~0.1.0",
+        "karma-firefox-launcher": "~0.1.0",
+        "karma-html2js-preprocessor": "~0.1.0",
+        "karma-jasmine": "latest",
+        "karma-phantomjs-launcher": "~0.1.0",
+        "karma-junit-reporter": "~0.1.0",
+        "karma-script-launcher": "~0.1.0",
+        "karma-osx-reporter": "latest",
+        "karma-browserstack-launcher": "latest",
+        "protractor": "latest",
+        "karma": "latest",
+        "bower": "latest",
+        "bower-installer": "latest",
+        "yo": "latest",
+        "grunt": "latest",
+        "grunt-contrib-sass": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-compass": "latest",
+        "karma-teamcity-reporter": "latest",
+        "grunt-mustache": "latest"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": ""
+}
