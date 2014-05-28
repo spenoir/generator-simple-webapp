@@ -11,9 +11,14 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     this.pkg = require('../package.json');
 
     this.on('end', function () {
-      if (!this.options['skip-install']) {
-        this.installDependencies();
-      }
+        this.installDependencies({
+          skipInstall: this.options['skip-install'],
+          callback: function () {
+            this.spawnCommand('./node_modules/.bin/bower-installer');
+          }.bind(this) // bind the callback to the parent scope
+        });
+
+
     });
   },
 
@@ -23,6 +28,18 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     // Have Yeoman greet the user.
     this.log(yosay('Welcome to the marvelous SimpleWebapp generator!'));
 
+    var prompts = [{
+      type: 'confirm',
+      name: 'someOption',
+      message: 'Would you like to enable this option?',
+      default: true
+    }];
+
+    this.prompt(prompts, function (props) {
+      this.someOption = props.someOption;
+
+      done();
+    }.bind(this));
   },
 
   app: function () {
@@ -43,7 +60,7 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     this.copy('_karma.config.js', 'karma.config.js');
     this.copy('_karma.local.config.js', 'karma.local.config.js');
     this.copy('_protractor.config.js', 'protractor.config.js');
-    this.copy('_agentsmutual.js', 'public/js/agentsmutual.js');
+    this.copy('_base.js', 'app/public/js/base.js');
   },
 
   projectfiles: function () {

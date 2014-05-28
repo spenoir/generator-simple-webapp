@@ -12,7 +12,7 @@
     "bootstrap-chosen": "https://github.com/alxlit/bootstrap-chosen.git"
   },
   "install": {
-    "path": "public/bower",
+    "path": "app/public/bower",
     "sources": {
       "bootstrap-chosen": [
           "bower_components/bootstrap-chosen/bootstrap-chosen.scss",
