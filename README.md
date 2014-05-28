@@ -32,7 +32,7 @@ $ npm install -g generator-simple-webapp
 Finally, initiate the generator:
 
 ```bash
-$ yo clojure-webapp
+$ yo simple-webapp
 ```
 
 ### Getting To Know Yeoman
