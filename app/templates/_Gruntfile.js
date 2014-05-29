@@ -6,56 +6,91 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  // Configurable paths
+  var config = {
+    app: 'app',
+    dist: 'dist'
+  };
+
   grunt.initConfig({
+
     pkg: grunt.file.readJSON('package.json'),
-    sass: {
-      dist: {
-        files: [
-          {
-            expand: true,
-            flatten: true,
-            cwd: 'public',
-            src: ['sass/*.scss'],
-            dest: 'public/css',
-            ext: '.css'
-          }
-        ],
-        options: {
-          style: 'expanded'
-        }
-      }
-    },
+
+    // Project settings
+    config: config,
+
     watch: {
-      css: {
-        files: '**/*.scss',
-        tasks: ['sass'],
-        options: {
-          livereload: true
-        }
+      sass: {
+        files: ['<%= config.app %>/public/sass/{,*/}*.{scss,sass}'],
+        tasks: ['sass:server']
       },
+      mustache: {
+        files: ['<%= config.app %>/templates/{,*/}*.mustache'],
+        tasks: ['template']
+      },
+
+//      styles: {
+//        files: ['<%%= config.app %>/public/css/{,*/}*.css'],
+//        tasks: ['newer:copy:styles', 'autoprefixer']
+//      },
+
       gruntfile: {
         files: ['Gruntfile.js']
       },
       livereload: {
         options: {
-          livereload: '<%%= connect.options.livereload %>'
+          livereload: '<%= connect.options.livereload %>'
         },
         files: [
-            '<%%= config.app %>/{,*/}*.html',
-            '.tmp/styles/{,*/}*.css',
-            '<%%= config.app %>/public/images/{,*/}*'
+          '<%= config.app %>/{,*/}*.html',
+          '<%= config.app %>/public/css/{,*/}*.css',
+          '<%= config.app %>/public/images/{,*/}*'
         ]
       }
     },
-    mustache: {
-      files: {
-        src: 'templates/',
-        dest: 'templates/templates.js',
-        options: {
-          verbose: true
-        }
+
+    template: {
+      dev: {
+        engine: 'mustache',
+        cwd: '<%= config.app %>/templates',
+        files: [
+          {
+            expand: true,     // Enable dynamic expansion.
+            cwd: '<%= config.app %>/templates',      // Src matches are relative to this path.
+            src: '*.mustache', // Actual pattern(s) to match.
+            dest: '<%= config.app %>/',   // Destination path prefix.
+            ext: '.html'  // Dest filepaths will have this extension.
+          }
+        ]
       }
     },
+
+    // Compiles Sass to CSS and generates necessary files if requested
+    sass: {
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/public/sass',
+            src: ['*.{scss,sass}'],
+            dest: '<%= config.app %>/public/css',
+            ext: '.css'
+          }
+        ]
+      },
+      server: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/public/sass',
+            src: ['*.{scss,sass}'],
+            dest: '<%= config.app %>/public/css',
+            ext: '.css'
+          }
+        ]
+      }
+    },
+
     // The actual grunt server settings
     connect: {
       options: {
@@ -86,8 +121,8 @@ module.exports = function (grunt) {
             dot: true,
             src: [
               '.tmp',
-              'dist/*',
-              '!dist/.git*'
+              '<%= config.dist %>/*',
+              '!<%= config.dist %>/.git*'
             ]
           }
         ]
@@ -96,7 +131,7 @@ module.exports = function (grunt) {
     }
 
   });
-  grunt.registerTask('default', ['sass', 'watch']);
+  grunt.registerTask('default', ['watch']);
 
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
     if (grunt.option('allow-remote')) {
@@ -112,6 +147,6 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-mustache');
+  grunt.loadNpmTasks('grunt-template-html');
 
 }
