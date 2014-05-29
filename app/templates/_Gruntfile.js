@@ -26,7 +26,7 @@ module.exports = function (grunt) {
       },
       mustache: {
         files: ['<%= config.app %>/templates/{,*/}*.mustache'],
-        tasks: ['template']
+        tasks: ['template:dev']
       },
 
 //      styles: {

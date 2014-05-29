@@ -20,6 +20,12 @@ exports.config = {
         }
     ],
 
+    onPrepare: function(){
+      require('jasmine-reporters');
+      jasmine.getEnv().addReporter(
+        new jasmine.JUnitXmlReporter('protractor_junit', true, true));
+    },
+
     jasmineNodeOpts: {
         showColors: true
     }
