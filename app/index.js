@@ -56,6 +56,7 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     this.mkdir('app/public/sass');
     this.mkdir('app/public/images');
     this.mkdir('app/templates');
+    this.mkdir('app/templates/data');
     this.mkdir('app/protractor_junit');
 
     this.copy('_package.json', 'package.json');

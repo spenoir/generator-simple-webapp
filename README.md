@@ -1,8 +1,14 @@
 # generator-simple-webapp [![Build Status](https://secure.travis-ci.org/spenoir/generator-simple-webapp.png?branch=master)](https://travis-ci.org/spenoir/generator-simple-webapp)
 
-> A simple [Yeoman](http://yeoman.io) generator that includes configs for Karma and Protractor
+> A simple [Yeoman](http://yeoman.io) generator that includes configs for Karma and Protractor.
+It also utilises assemble for mustache template compiling to html
 
-Uses bower-installer, Karma and Protractor
+Uses bower-installer, Karma, Protractor, Mustache
+
+## Dependencies
+
+- Yeoman
+- NPM
 
 ## Getting Started
 
@@ -40,6 +46,8 @@ $ ./node_modules/karma/bin/karma start karma.config.js
 ```bash
 $ ./node_modules/.bin/protractor protractor.config.js
 ```
+
+You'll need to replace '###' with your browserstack credentials in both of these configs
 
 ## License
 
