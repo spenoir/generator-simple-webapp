@@ -1,27 +1,10 @@
 # generator-simple-webapp [![Build Status](https://secure.travis-ci.org/spenoir/generator-simple-webapp.png?branch=master)](https://travis-ci.org/spenoir/generator-simple-webapp)
 
-> [Yeoman](http://yeoman.io) generator
+> A simple [Yeoman](http://yeoman.io) generator that includes configs for Karma and Protractor
 
+Uses bower-installer, Karma and Protractor
 
 ## Getting Started
-
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
-```bash
-$ npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
 To install generator-simple-webapp from npm, run:
 
@@ -29,18 +12,34 @@ To install generator-simple-webapp from npm, run:
 $ npm install -g generator-simple-webapp
 ```
 
-Finally, initiate the generator:
+## Commands
+
+### Initiate the generator:
 
 ```bash
 $ yo simple-webapp
 ```
 
-### Getting To Know Yeoman
+### Start a grunt server with livereload and mustache template assembling
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+```bash
+$ grunt serve
+```
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+This task will start a server and watch on sass, mustache files. When a mustache file is edited it will assemble an html
+ file in the project root.
 
+### Start karma tests with
+
+```bash
+$ ./node_modules/karma/bin/karma start karma.config.js
+```
+
+### Run protractor tests with
+
+```bash
+$ ./node_modules/.bin/protractor protractor.config.js
+```
 
 ## License
 

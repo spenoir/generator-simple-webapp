@@ -26,7 +26,7 @@ module.exports = function (grunt) {
       },
       mustache: {
         files: ['<%= config.app %>/templates/{,*/}*.mustache'],
-        tasks: ['template:dev']
+        tasks: ['assemble:site']
       },
 
 //      styles: {
@@ -49,19 +49,16 @@ module.exports = function (grunt) {
       }
     },
 
-    template: {
-      dev: {
+    assemble: {
+      options: {
+        partials: ['<%= config.app %>/templates/*.mustache'],
+        data: ['<%= config.app %>/templates/data/*.json'],
         engine: 'mustache',
-        cwd: '<%= config.app %>/templates',
-        files: [
-          {
-            expand: true,     // Enable dynamic expansion.
-            cwd: '<%= config.app %>/templates',      // Src matches are relative to this path.
-            src: '*.mustache', // Actual pattern(s) to match.
-            dest: '<%= config.app %>/',   // Destination path prefix.
-            ext: '.html'  // Dest filepaths will have this extension.
-          }
-        ]
+        flatten: true
+      },
+      site: {
+        src: ['<%= config.app %>/templates/*.mustache'],
+        dest: './'
       }
     },
 
@@ -147,6 +144,5 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-template-html');
-
+  grunt.loadNpmTasks('assemble');
 }

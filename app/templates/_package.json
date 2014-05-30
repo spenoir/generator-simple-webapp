@@ -24,12 +24,13 @@
         "grunt-contrib-compass": "latest",
         "grunt-contrib-connect": "~0.7.1",
         "grunt-contrib-clean": "~0.5.0",
-        "grunt-template-html": "latest",
         "load-grunt-tasks": "~0.4.0",
         "time-grunt": "~0.3.1",
         "grunt-contrib-uglify": "latest",
         "mustache": "latest",
-        "jasmine-reporters": "latest"
+        "jasmine-reporters": "latest",
+        "assemble": "latest",
+        "assemble-mustache": "latest"
     },
     "devDependencies": {},
     "scripts": {
