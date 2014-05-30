@@ -8,15 +8,15 @@ exports.config = {
         {
             'browserName': 'chrome',
             'version': '22.0',
-            'browserstack.user': 'adamspence2',
-            'browserstack.key': 'NTyc9awbmPigHTdbWNSn'
+            'browserstack.user': '###',
+            'browserstack.key': '###'
         }
         ,
         {
             'browserName': 'firefox',
             'version': '21.0',
-            'browserstack.user': 'adamspence2',
-            'browserstack.key': 'NTyc9awbmPigHTdbWNSn'
+            'browserstack.user': '###',
+            'browserstack.key': '###'
         }
     ],
 

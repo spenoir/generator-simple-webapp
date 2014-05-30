@@ -37,8 +37,8 @@ module.exports = function (config) {
         }
 
         ,browserStack: {
-          username: 'adamspence2',
-          accessKey: 'NTyc9awbmPigHTdbWNSn'
+          username: '###',
+          accessKey: '###'
         },
 
         // define browsers

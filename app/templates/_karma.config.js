@@ -35,8 +35,8 @@ module.exports = function (config) {
             outputFile: 'junit_output.xml',
             suite: 'unit'
         }, browserStack: {
-            username: 'adamspence2',
-            accessKey: 'NTyc9awbmPigHTdbWNSn'
+            username: '###',
+            accessKey: '###'
         },
 
         singleRun: true,
