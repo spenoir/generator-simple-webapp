@@ -4,6 +4,7 @@
   "description": "Yeoman generator that utilises bower-installer and creates karma/grunt/protractor configs",
   "license": "MIT",
   "main": "app/index.js",
+  "private": true,
   "repository": "spenoir/generator-simple-webapp",
   "author": {
     "name": "Adam Spence",
