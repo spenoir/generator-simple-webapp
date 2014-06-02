@@ -7,7 +7,6 @@
     "jquery.validation": "latest",
     "jasmine-jquery": "1.5.93",
     "bootstrap-sass-official": "latest",
-    "compass-mixins": "latest",
     "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.1.0/chosen_v1.1.0.zip",
     "bootstrap-chosen": "https://github.com/alxlit/bootstrap-chosen.git"
   },
@@ -17,9 +16,6 @@
       "bootstrap-chosen": [
           "bower_components/bootstrap-chosen/bootstrap-chosen.scss",
           "bower_components/bootstrap-chosen/bootstrap-chosen-variables.scss"
-      ],
-      "compass-mixins": [
-          "bower_components/compass-mixins/lib/**"
       ],
       "bootstrap-sass-official": "bower_components/bootstrap-sass-official/vendor/assets/**",
       "chosen": [

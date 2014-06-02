@@ -22,10 +22,10 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['<%= config.app %>/public/sass/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server']
+        tasks: ['compass:server']
       },
       mustache: {
-        files: ['<%= config.app %>/templates/{,*/}*.mustache'],
+        files: ['<%= config.app %>/templates/**/{,*/}*.mustache'],
         tasks: ['assemble:site']
       },
 
@@ -51,40 +51,30 @@ module.exports = function (grunt) {
 
     assemble: {
       options: {
-        partials: ['<%= config.app %>/templates/*.mustache'],
+        partials: ['<%= config.app %>/templates/includes/*.mustache'],
         data: ['<%= config.app %>/templates/data/*.json'],
         engine: 'mustache',
         flatten: true
       },
       site: {
         src: ['<%= config.app %>/templates/*.mustache'],
-        dest: './'
+        dest: './<%= config.app %>/'
       }
     },
 
     // Compiles Sass to CSS and generates necessary files if requested
-    sass: {
+    compass: {
       dist: {
-        files: [
-          {
-            expand: true,
-            cwd: '<%= config.app %>/public/sass',
-            src: ['*.{scss,sass}'],
-            dest: '<%= config.app %>/public/css',
-            ext: '.css'
-          }
-        ]
+        options: {
+          sassDir: '<%= config.app %>/public/sass',
+          cssDir: '<%= config.app %>/public/css'
+        }
       },
       server: {
-        files: [
-          {
-            expand: true,
-            cwd: '<%= config.app %>/public/sass',
-            src: ['*.{scss,sass}'],
-            dest: '<%= config.app %>/public/css',
-            ext: '.css'
-          }
-        ]
+        options: {
+          sassDir: '<%= config.app %>/public/sass',
+          cssDir: '<%= config.app %>/public/css'
+        }
       }
     },
 
@@ -95,7 +85,8 @@ module.exports = function (grunt) {
         open: true,
         livereload: 35729,
         // Change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
+        hostname: 'localhost',
+        base: '<%= config.app %>'
       },
       livereload: {
         options: {
@@ -138,11 +129,12 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'connect:livereload',
+      'assemble:site', 'compass:server',
       'watch'
     ]);
   });
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('assemble');
 }
