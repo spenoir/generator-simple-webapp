@@ -30,12 +30,14 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     // Have Yeoman greet the user.
     this.log(yosay('Welcome to the marvelous SimpleWebapp generator!'));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'skipBowerInstaller',
-      message: 'Would you like to skip bower-installer?',
-      default: false
-    }];
+    var prompts = [
+      {
+        type: 'confirm',
+        name: 'skipBowerInstaller',
+        message: 'Would you like to skip bower-installer copying files from bower_components?',
+        default: false
+      }
+    ];
 
     this.prompt(prompts, function (props) {
       this.skipBowerInstaller = props.skipBowerInstaller;
