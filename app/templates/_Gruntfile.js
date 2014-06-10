@@ -44,7 +44,8 @@ module.exports = function (grunt) {
         files: [
           '<%= config.app %>/{,*/}*.html',
           '<%= config.app %>/public/css/{,*/}*.css',
-          '<%= config.app %>/public/images/{,*/}*'
+          '<%= config.app %>/public/images/{,*/}*',
+          '<%= config.app %>/public/js/{,*/}*.js'
         ]
       }
     },
@@ -67,13 +68,15 @@ module.exports = function (grunt) {
       dist: {
         options: {
           sassDir: '<%= config.app %>/public/sass',
-          cssDir: '<%= config.app %>/public/css'
+          cssDir: '<%= config.app %>/public/css',
+          imagesDir: '<%= config.app %>/public/images'
         }
       },
       server: {
         options: {
           sassDir: '<%= config.app %>/public/sass',
-          cssDir: '<%= config.app %>/public/css'
+          cssDir: '<%= config.app %>/public/css',
+          imagesDir: '<%= config.app %>/public/images'
         }
       }
     },
@@ -87,6 +90,11 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost',
         base: '<%= config.app %>'
+      },
+      prod: {
+        options: {
+
+        }
       },
       livereload: {
         options: {
@@ -121,7 +129,8 @@ module.exports = function (grunt) {
   });
   grunt.registerTask('default', ['watch']);
 
-  grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
+  grunt.registerTask('standalone',
+      'start the server and preview your app, --allow-remote for remote access. Also compiles mustache templates to html', function (target) {
     if (grunt.option('allow-remote')) {
       grunt.config.set('connect.options.hostname', '0.0.0.0');
     }
@@ -130,6 +139,18 @@ module.exports = function (grunt) {
       'clean:server',
       'connect:livereload',
       'assemble:site', 'compass:server',
+      'watch'
+    ]);
+  });
+
+  grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
+    if (grunt.option('allow-remote')) {
+      grunt.config.set('connect.options.hostname', '0.0.0.0');
+    }
+
+    grunt.task.run([
+      'clean:server',
+      'compass:server',
       'watch'
     ]);
   });
