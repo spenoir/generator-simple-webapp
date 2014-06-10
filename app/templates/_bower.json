@@ -1,6 +1,6 @@
 {
   "name": "simple webapp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "a simple webapp that uses bower-installer and creates karma, grunt and protrator configs",
   "dependencies": {
     "jquery": "latest",
@@ -9,8 +9,8 @@
     "marionette": "~1.8.7",
     "underscore-contrib": "latest",
     "requirejs": "latest",
-    "require-handlebars-plugin": "latest",
-    "handlebars": "latest",
+    "mustache": "latest",
+    "requirejs-mustache": "latest",
     "jasmine-jquery": "1.5.93",
     "bootstrap-sass-official": "latest",
     "breakpoint-sass": "latest",

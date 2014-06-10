@@ -25,6 +25,10 @@ require.config({
     marionette : {
       deps : ['jquery', 'underscore', 'backbone'],
       exports : 'Marionette'
+    },
+    stache: {
+      extension: '.mustache',
+      path: '../../templates/'
     }
 	},
 	paths: {
@@ -32,7 +36,10 @@ require.config({
 		underscore: '../bower/underscore/underscore',
 		underscore_contrib: '../bower/underscore-contrib/underscore-contrib',
 		backbone: '../bower/backbone/backbone',
-    marionette: '../bower/marionette/marionette'
+    marionette: '../bower/marionette/marionette',
+    Mustache: '../bower/mustache/mustache',
+    text: '../bower/text/text',
+    stache: '../bower/stache'
 	}
 });
 

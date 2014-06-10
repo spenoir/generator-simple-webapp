@@ -124,6 +124,21 @@ module.exports = function (grunt) {
         ]
       },
       server: '.tmp'
+    },
+
+    // Run some tasks in parallel to speed up build process
+    concurrent: {
+      serve: [
+        'clean:server',
+        'compass:server',
+        'watch'
+      ],
+      standalone: [
+        'clean:server',
+        'connect:livereload',
+        'assemble:site', 'compass:server',
+        'watch'
+      ]
     }
 
   });
@@ -136,10 +151,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
-      'connect:livereload',
-      'assemble:site', 'compass:server',
-      'watch'
+      'concurrent:standalone'
     ]);
   });
 
@@ -149,9 +161,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
-      'compass:server',
-      'watch'
+      'concurrent:serve'
     ]);
   });
 
