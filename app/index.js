@@ -15,11 +15,11 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
           skipInstall: this.options['skip-install'],
           callback: function () {
             if (!this.options['skipBowerInstaller']) {
-              this.spawnCommand('./node_modules/.bin/bower-installer');
+              return this.spawnCommand('./node_modules/.bin/bower-installer');
             }
+            return false;
           }.bind(this) // bind the callback to the parent scope
         });
-
 
     });
   },
