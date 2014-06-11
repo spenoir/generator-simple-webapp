@@ -91,17 +91,12 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         base: '<%= config.app %>'
       },
-      prod: {
-        options: {
-
-        }
-      },
       livereload: {
         options: {
           middleware: function (connect) {
             return [
-              connect.static('.tmp'),
-              connect().use('/bower_components', connect.static('./bower_components')),
+              //connect.static('.tmp'),
+              //connect().use('/bower_components', connect.static('./bower_components')),
               connect.static(config.app)
             ];
           }
@@ -134,9 +129,7 @@ module.exports = function (grunt) {
         'watch'
       ],
       standalone: [
-        'clean:server',
-        'connect:livereload',
-        'assemble:site', 'compass:server',
+        'compass:server',
         'watch'
       ]
     }
@@ -151,8 +144,11 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'concurrent:standalone'
-    ]);
+        'clean:server',
+        'assemble:site',
+        'connect:livereload',
+        'concurrent:standalone'
+      ]);
   });
 
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {

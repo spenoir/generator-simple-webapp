@@ -74,6 +74,7 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     this.copy('_karma.local.config.js', 'karma.local.config.js');
     this.copy('_protractor.config.js', 'protractor.config.js');
     this.copy('_base.js', 'app/public/js/base.js');
+    this.copy('index.mustache', 'app/templates/index.mustache');
 
     this.copy('.folder', 'app/protractor_junit/.folder');
     this.copy('.folder', 'app/public/images/.folder');

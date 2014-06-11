@@ -1,6 +1,6 @@
 {
   "name": "generator-simple-webapp",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Yeoman generator that utilises bower-installer and creates karma/grunt/protractor configs",
   "license": "MIT",
   "main": "app/index.js",

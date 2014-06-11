@@ -11,6 +11,8 @@
     "requirejs": "latest",
     "mustache": "latest",
     "requirejs-mustache": "latest",
+    "require-handlebars-plugin": "latest",
+    "handlebars": "latest",
     "jasmine-jquery": "1.5.93",
     "bootstrap-sass-official": "latest",
     "breakpoint-sass": "latest",
