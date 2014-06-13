@@ -104,27 +104,9 @@ module.exports = function (grunt) {
       }
     },
 
-    // Empties folders to start fresh
-    clean: {
-      dist: {
-        files: [
-          {
-            dot: true,
-            src: [
-              '.tmp',
-              '<%= config.dist %>/*',
-              '!<%= config.dist %>/.git*'
-            ]
-          }
-        ]
-      },
-      server: '.tmp'
-    },
-
     // Run some tasks in parallel to speed up build process
     concurrent: {
       serve: [
-        'clean:server',
         'compass:server',
         'watch'
       ],
@@ -144,7 +126,6 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-        'clean:server',
         'assemble:site',
         'connect:livereload',
         'concurrent:standalone'
