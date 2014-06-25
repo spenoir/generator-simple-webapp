@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
     watch: {
       sass: {
-        files: ['<%= config.app %>/public/sass/{,*/}*.{scss,sass}'],
+        files: ['<%= config.app %>/public/sass/**/{,*/}*.{scss,sass}'],
         tasks: ['compass:server']
       },
       mustache: {
@@ -42,6 +42,10 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
+          '<%= config.app %>/**/{,*/}*.html',
+          '<%= config.app %>/public/css/**/{,*/}*.css',
+          '<%= config.app %>/public/images/**/{,*/}*',
+          '<%= config.app %>/public/js/**/{,*/}*.js',
           '<%= config.app %>/{,*/}*.html',
           '<%= config.app %>/public/css/{,*/}*.css',
           '<%= config.app %>/public/images/{,*/}*',
@@ -86,7 +90,7 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         open: true,
-        livereload: 35729,
+//        livereload: 35729,
         // Change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost',
         base: '<%= config.app %>'
@@ -95,8 +99,6 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              //connect.static('.tmp'),
-              //connect().use('/bower_components', connect.static('./bower_components')),
               connect.static(config.app)
             ];
           }
@@ -128,6 +130,19 @@ module.exports = function (grunt) {
     grunt.task.run([
         'assemble:site',
         'connect:livereload',
+        'concurrent:standalone'
+      ]);
+  });
+
+  grunt.registerTask('noreload',
+      'start the server and preview your app without livereload, --allow-remote for remote access. Also compiles mustache templates to html', function (target) {
+    if (grunt.option('allow-remote')) {
+      grunt.config.set('connect.options.hostname', '0.0.0.0');
+    }
+
+    grunt.task.run([
+        'assemble:site',
+        'connect',
         'concurrent:standalone'
       ]);
   });

@@ -56,6 +56,7 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     this.mkdir('app/public/js/tests/unit');
     this.mkdir('app/public/js/tests/e2e');
     this.mkdir('app/public/js/views');
+    this.mkdir('app/public/js/controller');
     this.mkdir('app/public/sass');
     this.mkdir('app/public/images');
     this.mkdir('app/templates');
@@ -73,8 +74,8 @@ var SimpleWebappGenerator = yeoman.generators.Base.extend({
     this.copy('_karma.config.js', 'karma.config.js');
     this.copy('_karma.local.config.js', 'karma.local.config.js');
     this.copy('_protractor.config.js', 'protractor.config.js');
-    this.copy('_base.js', 'app/public/js/base.js');
-    this.copy('index.mustache', 'app/templates/index.mustache');
+    this.copy('_app.js', 'app/public/js/app.js');
+    this.copy('_config.js', 'app/public/js/config.js');
 
     this.copy('.folder', 'app/protractor_junit/.folder');
     this.copy('.folder', 'app/public/images/.folder');

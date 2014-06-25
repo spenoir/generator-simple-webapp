@@ -6,22 +6,25 @@
     "jquery": "latest",
     "underscore": "latest",
     "backbone": "~1.1.2",
+    "backbone.babysitter": "latest",
+    "backbone.wreqr": "latest",
     "marionette": "~1.8.7",
     "underscore-contrib": "latest",
     "requirejs": "latest",
-    "mustache": "latest",
-    "requirejs-mustache": "latest",
-    "require-handlebars-plugin": "latest",
+    "requirejs-text": "latest",
+    "requirejs-hbs": "latest",
     "handlebars": "latest",
     "jasmine-jquery": "1.5.93",
     "bootstrap-sass-official": "latest",
     "breakpoint-sass": "latest",
     "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.1.0/chosen_v1.1.0.zip",
-    "bootstrap-chosen": "https://github.com/alxlit/bootstrap-chosen.git"
+    "bootstrap-chosen": "https://github.com/alxlit/bootstrap-chosen.git",
+    "json2": "latest"
   },
   "install": {
     "path": "app/public/bower",
     "sources": {
+      "require-handlebars-plugin": "bower_components/require-handlebars-plugin/hbs.js",
       "bootstrap-chosen": [
           "bower_components/bootstrap-chosen/bootstrap-chosen.scss",
           "bower_components/bootstrap-chosen/bootstrap-chosen-variables.scss"
@@ -33,7 +36,8 @@
         "bower_components/chosen/chosen-sprite.png",
         "bower_components/chosen/chosen-sprite@2x.png",
         "bower_components/chosen/chosen.jquery.js"
-      ]
+      ],
+      "json2": "bower_components/json2/json2.js"
     }
   },
   "authors": [
