@@ -22,18 +22,13 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['<%= config.app %>/public/sass/**/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server']
+        tasks: ['compass:server'],
+        livereload: true
       },
       mustache: {
         files: ['<%= config.app %>/templates/**/{,*/}*.mustache'],
         tasks: ['assemble:site']
       },
-
-//      styles: {
-//        files: ['<%%= config.app %>/public/css/{,*/}*.css'],
-//        tasks: ['newer:copy:styles', 'autoprefixer']
-//      },
-
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -90,7 +85,7 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         open: true,
-//        livereload: 35729,
+        livereload: 35729,
         // Change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost',
         base: '<%= config.app %>'
@@ -108,11 +103,11 @@ module.exports = function (grunt) {
 
     // Run some tasks in parallel to speed up build process
     concurrent: {
-      serve: [
+      watchonly: [
         'compass:server',
-        'watch'
+        'watch:sass'
       ],
-      standalone: [
+      watchall: [
         'compass:server',
         'watch'
       ]
@@ -130,7 +125,7 @@ module.exports = function (grunt) {
     grunt.task.run([
         'assemble:site',
         'connect:livereload',
-        'concurrent:standalone'
+        'concurrent:watchall'
       ]);
   });
 
@@ -143,17 +138,18 @@ module.exports = function (grunt) {
     grunt.task.run([
         'assemble:site',
         'connect',
-        'concurrent:standalone'
+        'concurrent:watchall'
       ]);
   });
 
-  grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
+  grunt.registerTask('prod', 'start the server and preview your app, --allow-remote for remote access', function (target) {
     if (grunt.option('allow-remote')) {
       grunt.config.set('connect.options.hostname', '0.0.0.0');
     }
 
     grunt.task.run([
-      'concurrent:serve'
+      'compass:server',
+      'watch'
     ]);
   });
 
